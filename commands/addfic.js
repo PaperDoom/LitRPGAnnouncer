@@ -13,6 +13,13 @@ exports.run = async (client, message, args) => {
 
     let addURL = args[0].toString();
 
+    if (!args[1]) {
+      message.channel.send("Failed. You need to add a type after the url.")
+      return
+    }
+    
+    let urlType = args[1].toString();
+
     let addFic = await parser.parseURL(addURL);
 
     if (!addFic.title) {
@@ -30,7 +37,8 @@ exports.run = async (client, message, args) => {
 
       await databaseFictions.insertOne({
         title: addFic.title,
-        link: addFic.link
+        link: addFic.link,
+        type: urlType
       });
 
       await databaseChapters.insertMany(addFic.items);

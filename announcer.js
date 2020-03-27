@@ -2,7 +2,9 @@ const config = require("./config")
 const Discord = require("discord.js");
 const client = new Discord.Client();
 
-const litrpgHook = new Discord.WebhookClient(config.Webhooks.litrpg.id, config.Webhooks.litrpg.token)
+const litrpgWebnovelHook = new Discord.WebhookClient(config.Webhooks.litrpgWebnovel.id, config.Webhooks.litrpgWebnovel.token)
+const litrpgSocialHook = new Discord.WebhookClient(config.Webhooks.litrpgSocial.id, config.Webhooks.litrpgSocial.token)
+const litrpgReviewHook = new Discord.WebhookClient(config.Webhooks.litrpgReview.id,config.Webhooks.litrpgReview.token)
 const treehouseHook = new Discord.WebhookClient(config.Webhooks.treehouse.id, config.Webhooks.treehouse.token)
 
 const fs = require("fs");
@@ -29,7 +31,9 @@ async function init() {
     client.mongodb = db;
     client.login(config.Token.Treehouse)
     //client.testhook = testhook
-    client.litrpgHook = litrpgHook
+    client.litrpgWebnovelHook = litrpgWebnovelHook
+    client.litrpgSocialHook =litrpgSocialHook
+    client.litrpgReviewHook =litrpgReviewHook
     client.treehouseHook = treehouseHook
   })
 }

@@ -2,7 +2,7 @@ let addChapter = require("./addChapter")
 let Parser = require('rss-parser');
 let parser = new Parser();
 
-module.exports = async (client, link) => {
+module.exports = async (client, link, type) => {
 
   try {
     let databaseChapters = client.mongodb.db('litrpgannouncer').collection('chapters')
@@ -35,7 +35,7 @@ module.exports = async (client, link) => {
       });
 
       if (!dbGUID) {
-        await addChapter(client, chapter)
+        await addChapter(client, chapter, type)
       }
     }
   } catch (e) {

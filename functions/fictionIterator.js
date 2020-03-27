@@ -14,7 +14,7 @@ module.exports = async (client) => {
     }
     
     for (let fiction of fictionList) {
-      checkChapters(client, fiction.link)
+      checkChapters(client, fiction.link, fiction.type)
 
     }
   } catch (e) {

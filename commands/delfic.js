@@ -7,11 +7,11 @@ exports.run = async (client, message, args) => {
 
     let database = client.mongodb.db('litrpgannouncer').collection('fictions');
 
-    let addURL = args[0].toString();
+    let delURL = args[0].toString();
 
-    let addFic = await parser.parseURL(addURL);
+    let delFic = await parser.parseURL(delURL);
 
-    let fictionLink = addFic.link;
+    let fictionLink = delFic.link;
 
     let dbFictionLink = await database.findOne({
       link: fictionLink
@@ -20,7 +20,7 @@ exports.run = async (client, message, args) => {
     if (dbFictionLink) {
 
       await database.deleteOne({
-        link: addFic.link
+        link: delFic.link
       });
 
       message.channel.send("Fiction deleted.");
