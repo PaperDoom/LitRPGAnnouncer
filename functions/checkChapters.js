@@ -39,6 +39,15 @@ module.exports = async (client, link, type) => {
       }
     }
   } catch (e) {
-    console.log(e)
+
+    if (e = "Error: Status code 404") {
+
+      let databaseFictions = client.mongodb.db('litrpgannouncer').collection('fictions')
+      console.log("Error: 404\nDeleting link: " + link)
+      databaseFictions.deleteOne({link: link})
+      
+    } else {
+      console.log(e)
+    }
   }
 }
