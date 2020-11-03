@@ -42,9 +42,7 @@ module.exports = async (client, link, type) => {
 
     if (e = "Error: Status code 404") {
 
-      let databaseFictions = client.mongodb.db('litrpgannouncer').collection('fictions')
-      console.log("Error: 404\nDeleting link: " + link)
-      databaseFictions.deleteOne({link: link})
+      console.log("Error: 404\nCheck link: " + link)
       
     } else {
       console.log(e)
