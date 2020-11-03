@@ -43,6 +43,7 @@ module.exports = async (client, link, type) => {
     if (e = "Error: Status code 404") {
 
       console.log("Error: 404\nCheck link: " + link)
+      client.treehouseHook.send(`Check link: ${link}`)
       
     } else {
       console.log(e)
