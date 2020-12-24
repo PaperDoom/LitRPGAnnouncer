@@ -9,18 +9,14 @@ exports.run = async (client, message, args) => {
 
     let delURL = args[0].toString();
 
-    let delFic = await parser.parseURL(delURL);
-
-    let fictionLink = delFic.link;
-
     let dbFictionLink = await database.findOne({
-      link: fictionLink
+      link: delURL
     });
 
     if (dbFictionLink) {
 
       await database.deleteOne({
-        link: delFic.link
+        link: delURL
       });
 
       message.channel.send("Fiction deleted.");
