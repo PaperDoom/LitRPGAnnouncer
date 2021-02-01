@@ -27,17 +27,15 @@ exports.run = async (client, message, args) => {
       return
     }
 
-    let fictionLink = addFic.link;
-
     let dbFictionLink = await databaseFictions.findOne({
-      link: fictionLink
+      link: addURL
     });
 
     if (!dbFictionLink) {
 
       await databaseFictions.insertOne({
         title: addFic.title,
-        link: addFic.link,
+        link: addURL,
         type: urlType
       });
 
