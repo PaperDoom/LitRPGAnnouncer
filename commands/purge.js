@@ -3,11 +3,8 @@ exports.run = async (client, message, args) => {
     try {
 
         let messagecount = parseInt(args[0], 10) ? parseInt(args[0], 10) : 1;
-        let messages = await message.channel.messages.fetch({ limit: 100 });
-        let msg_array = messages.array();
 
-        msg_array.length = messagecount;
-        msg_array.map(m => m.delete().catch(console.error));
+        await message.channel.bulkDelete(messagecount)
 
     }
     catch (err) {
